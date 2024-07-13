@@ -1,4 +1,4 @@
-<?php include_once('../components/header.php') ?>
+<?php include('../components/header.php') ?>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -86,4 +86,4 @@ $result = execute($conn,"special", $sqlstring,"", [], "", []);
 
     
 </div>
-<?php include_once('../components/footer.php') ?>
+<?php include('../components/footer.php') ?>

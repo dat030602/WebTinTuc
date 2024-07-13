@@ -16,4 +16,4 @@ header('Location: ../pages/login.php');
 exit;
 ?>
 
-<?php include_once('../components/footer.php') ?>
+<?php include('../components/footer.php') ?>

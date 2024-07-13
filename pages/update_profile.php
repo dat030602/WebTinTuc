@@ -1,4 +1,4 @@
-<?php include_once('../components/header.php') ?>
+<?php include('../components/header.php') ?>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -48,6 +48,9 @@ if (isset($_POST['submit'])) {
             <label for="website">Profile</label>
             <textarea type="text" class="form-control" style="height: 200px;" name="profile_json_text" id="profile_json_text" placeholder="Profile"><?php echo $data['profile_json_text']?></textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-4" name='submit'>Lưu</button>
+        <div class='d-flex justify-content-center mt-4'>
+            <button type="submit" class="btn btn-primary mt-4 p-4 pt-2 pb-2" name='submit'>Lưu</button>
+        </div>
     </form>
 </div>
+<?php include('../components/footer.php') ?>

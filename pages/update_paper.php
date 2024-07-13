@@ -1,4 +1,4 @@
-<?php include_once('../components/header.php') ?>
+<?php include('../components/header.php') ?>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -55,8 +55,11 @@ $user_id = intval($_SESSION['account']['user_id']);
     }
     ?>
 
+<?php 
+
+?>
 <div class="container">
-    <form method="post" action="" onsubmit="">
+    <form method="post" action="" onsubmit="return handle_submit_paper();">
         <div class="form-group">
             <label for="name">Title</label>
             <input type="text" class="form-control" name="title" id="title" placeholder="Tên" value="<?php echo $data['title']?>">
@@ -65,6 +68,10 @@ $user_id = intval($_SESSION['account']['user_id']);
             <label for="website">Abstract</label>
             <textarea type="text" class="form-control" style="height: 200px;" name="abstract" id="abstract" placeholder="Abstract"><?php echo $data['abstract']?></textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-4" name='submit'>Lưu</button>
+        <div class='d-flex justify-content-center mt-4'>
+            <button type="submit" class="btn btn-primary mt-4 p-4 pt-2 pb-2" name='submit'>Lưu</button>
+        </div>
     </form>
 </div>
+<?php include('../components/footer.php') ?>
+<script src="../assets/js/update_paper.js"></script>

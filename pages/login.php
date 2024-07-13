@@ -1,4 +1,7 @@
-<?php include_once('../components/header.php') ?>
+<?php include('../components/header.php');?>
+<style>
+<?php include('../assets/css/login.css');?>
+</style>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -27,7 +30,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col col-md-6 col-md-offset-3">
             <div class="panel panel-defaul">
                 <div class="panel-heading">
@@ -51,17 +54,20 @@ if (isset($_POST['submit'])) {
                             <label for="password">Mật khẩu</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu">
                         </div>
-
-                        <button type="submit" class="btn btn-primary mt-4" name='submit'>Đăng nhập</button>
-                        <button type="button" class="btn btn-primary mt-4">
-                            <a href="forget-password.php">Quên mật khẩu</a>
-                            <br>
-                        <button type="button" class="btn btn-white mt-4">
-                        <a href="regisin.php">Tạo tài khoản</a></button>
+                        <div>
+                            <button type="submit" class="btn btn-primary mt-4 mr-4 p-4 pt-2 pb-2" name='submit'>Đăng nhập</button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn mt-4 p-4 pt-2 pb-2">
+                                <a href="forget-password.php">Quên mật khẩu</a>
+                                <br>
+                            <button type="button" class="btn btn-white mt-4 p-4 pt-2 pb-2">
+                                <a href="regisin.php">Tạo tài khoản</a></button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php include_once('../components/footer.php') ?>
+<?php include('../components/footer.php') ?>

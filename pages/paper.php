@@ -1,4 +1,4 @@
-<?php include_once('../components/header.php') ?>
+<?php include('../components/header.php') ?>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -48,17 +48,23 @@ $user_id = intval($_SESSION['account']['user_id']);
     $data = $result_paper->fetch_array(MYSQLI_ASSOC);;
     $user_add = $data['author_string_list'] . ',' . $data['full_name']
     ?>
+<div class="container">
 <div>
     <h1><?php echo $data['title']?></h1>
-    <p>Topic: <?php echo $data['topic_name']?></p>
-    <p>User: <?php echo $data['full_name']?></p>
-    <p>Participaint: <?php echo $data['author_string_list']?></p>
-    
+    <p>Topic: <strong><?php echo $data['topic_name']?></strong></p>
+    <p>User: <strong><?php echo $data['full_name']?></strong></p>
+    <p>Participaint: <strong><?php echo $data['author_string_list']?></strong></p>
+    <div class="d-flex justify-content-center mt-4">
+      <h4>CONTENT</h4>
+    </div>
     <p><?php echo $data['abstract']?></p>
-</div>
+    <div class="d-flex justify-content-center mt-4">
+      <p>---------------------<strong>END</strong>---------------------</p>
+    </div>
+</d>
 <?php
 if (strpos($data['full_name'], $data['author_string_list']) !== false) {
-echo "<a href='/pages/add_member_paper.php?paper_id=<?php echo $id?>&user=<?php echo $user_add?>' class='btn btn-success'>Trở thành thành viên</a>";
+echo "<a href='/pages/add_member_paper.php?paper_id=<?php echo $id?>&user=<?php echo $user_add?>' class='btn btn-success p-4 pt-2 pb-2'>Trở thành thành viên</a>";
 }
 ?>
 <h5>Đồng tác giả</h5>
@@ -123,8 +129,10 @@ echo "<a href='/pages/add_member_paper.php?paper_id=<?php echo $id?>&user=<?php 
         $par_not_user_id = $row['user_id'];
         $par_not_name = $row['full_name'];
         $par_not_link = "
+        <div class='d-flex align-item-center flex-column'>
         <div><a href='/pages/add_participant.php?paper_id=$id&user_id=$par_not_user_id&role=first_author'>First member</a></div>
         <div><a href='/pages/add_participant.php?paper_id=$id&user_id=$par_not_user_id&role=member'>Member</a></div>
+        </div>
         ";
       ?>
         <div class="col">
@@ -140,9 +148,13 @@ echo "<a href='/pages/add_member_paper.php?paper_id=<?php echo $id?>&user=<?php 
       <?php } }?>
   </tbody>
 </table>
+<div class="d-flex justify-content-center mt-4 pb-4">
 <?php
 if (isset($_SESSION['account'])) 
 if ($_SESSION['account']['user_id'] == $data['user_id'] || $_SESSION['account']['user_type'] =='admin') {
-echo "<a href='/pages/update_paper.php?id=$id' class='btn btn-success'>Cập nhật</a>";
+echo "<a href='/pages/update_paper.php?id=$id' class='btn btn-success p-4 pt-2 pb-2'>Cập nhật</a>";
 }
 ?>
+</div>
+</div>
+<?php include('../components/footer.php') ?>

@@ -6,4 +6,4 @@ $result = execute($conn, "delete", '',[], [], "participation", ['paper_id' => $_
 header("Location: ../pages/paper.php?id=$id");
 ?>
 
-<?php include_once('../components/footer.php') ?>
+<?php include('../components/footer.php') ?>

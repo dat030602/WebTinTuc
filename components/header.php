@@ -34,7 +34,7 @@ session_start();
                 ";
             }
             else
-              echo "<a href='../pages/login.php' class='btn btn-primary'>Login</a>";
+              echo "<a href='../pages/login.php' class='btn btn-primary p-4 pt-2 pb-2'>Login</a>";
         ?>
         
       </div>

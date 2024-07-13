@@ -1,4 +1,4 @@
-<?php include_once('components/header.php') ?>
+<?php include('components/header.php') ?>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -69,8 +69,8 @@ $result = execute($conn,"special", $sqlstring,"", [], "", []);
             <div class='col-4 mb-2'>
                 <div class='card'>
                     <div class='card-body'>
-                        <h3 class='card-title' style='font-size: 16px;'>Tên bài báo: <a href='/pages/paper.php?id=$paper_id'>$title></a></h3>
-                        <p class='card-text' style='font-size: 16px;'>Tác giả: <a href='/pages/profile.php?id=$user_id>'>$author_username></a></p>
+                        <h3 class='card-title' style='font-size: 16px;'>Tên bài báo: <a href='/pages/paper.php?id=$paper_id'>$title</a></h3>
+                        <p class='card-text' style='font-size: 16px;'>Tác giả: <a href='/pages/profile.php?id=$user_id'>$author_username</a></p>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,5 @@ $result = execute($conn,"special", $sqlstring,"", [], "", []);
         $pre_topic = $cur_topic;
         $cur_topic = "";
     } ?>
-
-    
 </div>
-<?php include_once('components/footer.php') ?>
+<?php include('../components/footer.php') ?>

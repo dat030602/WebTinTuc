@@ -13,4 +13,4 @@ $result = execute($conn, "insert", '',[
 header("Location: ../pages/paper.php?id=$id");
 ?>
 
-<?php include_once('../components/footer.php') ?>
+<?php include('../components/footer.php') ?>

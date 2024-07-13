@@ -6,4 +6,4 @@ $result = execute($conn, "update", '',['author_string_list'=> $_GET['user']], []
 header("Location: ../pages/paper.php?id=$id");
 ?>
 
-<?php include_once('../components/footer.php') ?>
+<?php include('../components/footer.php') ?>

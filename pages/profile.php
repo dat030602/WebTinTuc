@@ -1,4 +1,7 @@
-<?php include_once('../components/header.php') ?>
+<?php include('../components/header.php') ?>
+<style>
+    <?php include('../assets/css/profile.css') ?>
+</style>
 <?php 
 $errors = []; // biến để lưu tất cả các lỗi ở server thực hiện và trả về cho người dùng (1 mảng)
 $success = ""; // là 1 chuỗi thông báo thành công (1 chuỗi)
@@ -11,20 +14,28 @@ $data = $result->fetch_array(MYSQLI_ASSOC);
 $profile_json_text = $data['profile_json_text'];
 ?>
 <div class="container">
-    <h3><?php echo $data['full_name']?></h3>
-    <h3><?php echo $data['website']?></h3>
-    <img src="<?php echo $data['image_path']?>" alt="Avatar"/>
+    <div class="d-flex align-item-center">
+        <div class="p-3">
+            <img class="avatar" src="<?php echo $data['image_path']?>" alt="Avatar"/>
+        </div>
+        <div>
+            <h2><?php echo $data['full_name']?></h2>
+            <p>Website: <strong><?php echo $data['website']?></strong></p>
+        </div>
+    </div>
     <?php
-        $data = json_decode($profile_json_text, true);
-        echo '<p>Thông tin thêm:</p>';
-        echo '<p><strong>Bio:</strong> ' . $data['bio'] . '</p>';
-        echo '<p><strong>Interests:</strong> ';
-        echo '<ul>';
-        foreach ($data['interests'] as $interest) {
-            echo '<li>' . $interest . '</li>';
+        if($profile_json_text != '') {
+            $data = json_decode($profile_json_text, true);
+            echo '<p>Thông tin thêm:</p>';
+            echo '<p><strong>Bio:</strong> ' . $data['bio'] . '</p>';
+            echo '<p><strong>Interests:</strong> ';
+            echo '<ul>';
+            foreach ($data['interests'] as $interest) {
+                echo '<li>' . $interest . '</li>';
+            }
+            echo '</ul>';
+            echo '</p>';
         }
-        echo '</ul>';
-        echo '</p>';
     ?>
     <?php 
         $sqlstring = "
@@ -90,6 +101,11 @@ $profile_json_text = $data['profile_json_text'];
 <?php
 if (isset($_SESSION['account'])) 
 if ($_SESSION['account']['user_id'] == $user_id || $_SESSION['account']['user_type'] =='admin')
-    echo "<a href='/pages/update_profile.php?id=$user_id' class='btn btn-success'>Cập nhật</a>"
+    echo "
+    <div class='d-flex justify-content-center mt-4'>
+        <a href='/pages/update_profile.php?id=$user_id' class='btn btn-success p-4 pt-2 pb-2'>Cập nhật</a>
+    </div>
+"
 ?>
 </div>
+<?php include('../components/footer.php') ?>
